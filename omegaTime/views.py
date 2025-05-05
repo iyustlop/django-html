@@ -10,11 +10,11 @@ def index(request):
 
 def worker(request):
   workers = list(Worker.objects.values())
-  return JsonResponse(workers, safe=False)
+  return render(request, 'workers.html')
 
 def worker_name(request, name):
   worker = get_object_or_404(Worker, name=name)
-  return HttpResponse("Hola %s" % worker.name)
+  return render(request, 'worker.html')
 
 def about(request):
-  return HttpResponse("About")
+  return render(request, 'about.html')
