@@ -10,7 +10,9 @@ def index(request):
 
 def worker(request):
   workers = list(Worker.objects.values())
-  return render(request, 'workers.html')
+  return render(request, 'workers.html', {
+    'workers': workers
+  })
 
 def worker_name(request, name):
   worker = get_object_or_404(Worker, name=name)
