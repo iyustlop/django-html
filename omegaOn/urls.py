@@ -20,5 +20,6 @@ from omegaTime import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.hello)
+    path('', views.hello),
+    path('about/', views.about)
 ]
