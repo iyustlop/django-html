@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from .models import Worker, Account
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -7,10 +9,12 @@ def index(request):
   return HttpResponse("Index Page")
 
 def worker(request):
-  return HttpResponse("Hola mundo")
+  workers = list(Worker.objects.values())
+  return JsonResponse(workers, safe=False)
 
 def worker_name(request, name):
-  return HttpResponse("Hola %s" % name) 
+  worker = get_object_or_404(Worker, name=name)
+  return HttpResponse("Hola %s" % worker.name)
 
 def about(request):
   return HttpResponse("About")
