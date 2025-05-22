@@ -15,8 +15,8 @@ def worker(request):
   })
 
 def worker_name(request, name):
-  worker = get_object_or_404(Test, name=name)
-  return render(request, 'worker.html')
+  worker = get_object_or_404(Worker, name=name)
+  return render(request, 'worker.html', {'worker': worker})
 
 def about(request):
   return render(request, 'about.html')
